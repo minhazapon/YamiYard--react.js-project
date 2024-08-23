@@ -10,6 +10,7 @@ import Root from './Root';
 import Home from './Home';
 import Connect from './Contact file/Connect';
 import About from './about file/About';
+import Menu from './menu file/Menu';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element:   <About></About>  ,
+      },
+      {
+        path: "/menu",
+        element:   <Menu></Menu>  ,
       },
     ],
   },
