@@ -24,6 +24,7 @@ const Home = () => {
             <Our></Our>
             <Photos></Photos>
             <Contacts></Contacts>
+
                
         </div>
     );
