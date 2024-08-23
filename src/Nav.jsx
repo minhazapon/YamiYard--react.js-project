@@ -1,9 +1,41 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from './image/r1.jpg'
+import { useContext } from "react";
+import { fireContext } from "./firebase/AuthContext";
 
 
 
 const Nav = () => {
+
+
+     const {user, logOut} = useContext(fireContext)
+
+     
+     const handleOut = () => {
+      logOut()
+      .then(() => console.log('logOut successfully'))
+      .catch( error => 
+        console.error(error)
+      )
+    
+     }
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    const NV = <>
    
@@ -60,7 +92,21 @@ const Nav = () => {
     </ul>
   </div>
   <div className="navbar-end">
+
+
+  { user ? <>
+    
+    <button onClick={handleOut} className=" btn">SignOut</button>
+  </>:
+
+  <Link to="/login" ><a className="btn">SignIn</a></Link>   
+
+  }
+
+    {/* <Link to='/login' >
     <a className="btn">SignIn</a>
+    </Link> */}
+    
   </div>
 </div>
             

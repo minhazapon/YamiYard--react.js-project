@@ -11,6 +11,10 @@ import Home from './Home';
 import Connect from './Contact file/Connect';
 import About from './about file/About';
 import Menu from './menu file/Menu';
+import Login from './firebase/Login';
+import SignUp from './firebase/SignUp';
+import AuthContext from './firebase/AuthContext';
+import PrivateRoute from './firebase/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -23,15 +27,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element:  <Connect></Connect>  ,
+        element:  <PrivateRoute><Connect></Connect></PrivateRoute>   ,
       },
       {
         path: "/about",
-        element:   <About></About>  ,
+        element:  <PrivateRoute><About></About></PrivateRoute>     ,
       },
       {
         path: "/menu",
-        element:   <Menu></Menu>  ,
+        element:  <PrivateRoute><Menu></Menu></PrivateRoute>     ,
+      },
+      {
+        path: "/login",
+        element:  <Login></Login>  ,
+      },
+      {
+        path: "/up",
+        element:  <SignUp></SignUp> ,
       },
     ],
   },
@@ -39,6 +51,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+
+    <AuthContext>
+      
     <RouterProvider router={router} />
+
+    </AuthContext>
+    
   </StrictMode>,
 )
